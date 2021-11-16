@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+  rstudio:
+    container_name: rstudio
+    image: rstudio
+    build:
+      context: .
+    user: 'root'
+    ports:
+      - "8787:8787"
+    environment:
+      - PASSWORD=password
+      - DISABLE_AUTH=true
+    volumes:
+      - ./shiny-hawk:/home/rstudio/project
