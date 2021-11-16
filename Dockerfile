@@ -1,7 +1,7 @@
 FROM rocker/rstudio:latest
 
-RUN apt-get update && apt-get install -y \
-    sudo \
+RUN sudo apt-get update && \
+    sudo apt-get install -y \
     gdebi-core \
     pandoc \
     pandoc-citeproc \
