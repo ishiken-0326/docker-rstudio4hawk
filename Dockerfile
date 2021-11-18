@@ -26,4 +26,7 @@ RUN ln -sf  /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
 COPY --chown=rstudio:rstudio ./rstudio-prefs.json /home/rstudio/.config/rstudio/rstudio-prefs.json
 
-# RUN R -e "install.packages(c('packrat', 'rsconnect'), dependencies=TRUE, repos='http://cran.rstudio.com/')"
+COPY ./shiny-hawk/development.R /home/development.r
+COPY ./shiny-hawk/package_list.txt /home/package_list.txt
+WORKDIR /home
+RUN R -e "source('./development.r')"
